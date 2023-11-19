@@ -72,51 +72,23 @@ public class Something {
         return dictionary;
     }
 
-//    public static String convertToRoman(int arab) throws Exception {
-//        if(arab >4000){
-//            throw new Exception("Too big number");
-//        }
-//        StringBuilder roman = new StringBuilder();\
-//        Integer x, Integer y -> x + y
-//
-//
-//
-////        table.put("I", 1);
-////        table.put("V", 5);
-////        table.put("X", 10);
-////        table.put("L", 50);
-////        table.put("C", 100);
-////        table.put("D", 500);
-////        table.put("M", 1000);
-//
-////        Iterator<String> symbol = table.keySet().iterator();
-////        symbol.next();
-//        int order = 0;
-//        while(arab > 0){
-//            int digit = arab % 10;
-//            if (digit == 1){
-//                roman.append(transform.get(order));
-//            } else if (digit == 5) {
-//                roman.append(transform.get(order + 1));
-//            } else if (digit == 4) {
-//                roman.append(transform.get(order + 1));
-//
-//            }
-//
-////            Integer value = table.get(symbol);
-////            Integer next_value = table.get(symbol.next());
-////            if(arab - value >= 0){
-////                arab -= value;
-////                roman.append(symbol);
-////            }
-////            else if (arab - value + next_value >= 0){
-////                arab -= value;
-////                arab += next_value;
-////            }
-//        }
-//
-//        return roman.toString();
-//    }
+    public static String convertToRoman(int arab) throws Exception {
+        if (arab > 4000) {
+            throw new Exception("Too big number");
+        }
+        String[] romanSymbols = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < values.length; i++) {
+            while (arab >= values[i]) {
+                arab -= values[i];
+                result.append(romanSymbols[i]);
+            }
+        }
+
+        return result.toString();
+    }
 
     public static List<Person> parseContacts(List<String> list, String type) throws Exception {
         List<Person> contacts = new ArrayList<>();
@@ -134,7 +106,7 @@ public class Something {
             }
         }
         Comparator<Person> surnameComparator;
-        surnameComparator = switch (type){
+        surnameComparator = switch (type) {
             case "ASC" -> Comparator.comparing(Person::getSurname);
             case "DESC" -> Collections.reverseOrder(Comparator.comparing(Person::getSurname));
             default -> throw new Exception("Incorrect sort type");
@@ -148,7 +120,7 @@ public class Something {
             "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. ― Martin Fowler"));
         System.out.println(clusterize("((())())(()(()()))"));
         System.out.println(freqDict(List.of(1, 1, 2, 2)));
-//        System.out.println(convertToRoman(10));
+        System.out.println(convertToRoman(74));
         System.out.println(parseContacts(List.of("Paul Erdos", "Leonhard Euler", "Carl Gauss", "Mister Who"), "DESC"));
     }
 }
