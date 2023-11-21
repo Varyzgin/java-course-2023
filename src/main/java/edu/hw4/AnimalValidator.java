@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@SuppressWarnings("HideUtilityClassConstructor")
 public class AnimalValidator {
+    @SuppressWarnings("MagicNumber")
     public static Map<String, Set<ValidationError>> validateAnimals(List<Animal> animals) {
         Map<String, Set<ValidationError>> errorMap = new HashMap<>();
 
