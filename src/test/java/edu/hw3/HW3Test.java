@@ -1,6 +1,6 @@
 package edu.hw3;
 
-import edu.hw3.task1.Person;
+import edu.hw3.task1.Atbash;
 import edu.hw3.task1.Something;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
