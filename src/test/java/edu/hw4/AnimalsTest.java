@@ -77,10 +77,7 @@ public class AnimalsTest {
     void animal_count_by_type() {
         Map<Animal.Type, Long> animalCountByType = animals.stream()
             .collect(groupingBy(Animal::type, counting()));
-
-        for (var entry : animalCountByType.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
+        
         assertEquals(2, animalCountByType.get(Animal.Type.CAT));
         assertEquals(1, animalCountByType.get(Animal.Type.SPIDER));
     }
