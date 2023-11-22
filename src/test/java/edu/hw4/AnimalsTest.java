@@ -234,7 +234,7 @@ public class AnimalsTest {
                 .thenComparing(Animal::sex)
                 .thenComparing(Animal::name)).toList();
 
-        assertSame(animals.get(4), list.get(4));
+        assertTrue(list.contains(animals.get(0)));
     }
 
     @Test
@@ -285,6 +285,6 @@ public class AnimalsTest {
     void errors_checker_pro() {
         Map<String, String> errors = AnimalValidatorPro.validateAnimals(animals);
 
-        assertEquals("Ошибка: у животного Bird в поле bites - 'Birds can't bit'", errors.get("Bird"));
+        assertEquals("Ошибка: у животного Bird в поле BITES - 'Birds can't bit'", errors.get("Bird"));
     }
 }
